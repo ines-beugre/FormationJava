@@ -1,0 +1,75 @@
+System.out.println("");
+		String dir1 = "../../Documents/tp4";
+
+		fileSystem.moveFileToParentsFolder(dir1);
+		
+		
+		
+File directory = new File(filePath);
+		File newName = new File("../../Documents/tp4");
+
+		Path sourceDirectory = Paths.get("../../Documents/jartest.jar");
+		Path targetDirectory = Paths.get("../../Documents/tp4/jartest.jar");
+
+		// création du dossier
+		if (!directory.exists()) {
+			System.out.println("Création du dossier: " + directory.getName());
+			boolean result = false;
+
+			try {
+				directory.mkdir();
+				// copie du fichier
+				Files.copy(sourceDirectory, targetDirectory);
+				// renommer le dossier
+				boolean isFileRenamed = directory.renameTo(newName);
+				System.out.println("Dossier rennomé: " + newName.getName());
+
+				result = true;
+			} catch (SecurityException se) {
+				// handle it
+			}
+			if (result) {
+				System.out.println("dossier créé");
+			}
+		} else {
+			System.out.println("le dossier existe déjà");
+		}
+
+	}
+	
+	
+	
+	
+	try {
+			fr = new FileReader(source);
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (br != null) {
+					br.close();
+				}
+
+				if (fr != null) {
+					fr.close();
+				}
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+
+		}		
